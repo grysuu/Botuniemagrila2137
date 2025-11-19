@@ -1,0 +1,368 @@
+/* ============================================
+   Ugotowani — pełny, komplet poprawiony STYLE.CSS
+   ============================================ */
+
+:root{
+  --bg: #0f0f10;
+  --muted: #9a9a9a;
+  --text: #efefef;
+  --accent: #ddd;
+  --max-width: 1200px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  scroll-behavior:smooth;
+  line-height:1.6;
+}
+
+/* ============================================
+   HEADER — stały, lekki, półprzezroczysty
+   ============================================ */
+.site-header{
+  position:fixed;
+  left:0; top:0;
+  width:100%;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 28px;
+  background:rgba(0,0,0,0.12);
+  backdrop-filter:blur(4px);
+  z-index:1200;
+}
+
+.logo{
+  width:84px;
+  height:44px;
+  border-radius:4px;
+  background-image:url("logo3.png");
+  background-size:cover;
+  background-position:center;
+  filter:grayscale(1) brightness(.9);
+}
+
+.main-nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+}
+
+.main-nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  font-size:0.95rem;
+  letter-spacing:0.6px;
+  transition:opacity .18s, transform .18s;
+}
+.main-nav a:hover{
+  opacity:.8;
+  transform:translateY(-2px);
+}
+
+/* ============================================
+   HERO — naprawiony, tekst nigdy pod menu
+   ============================================ */
+.hero{
+  position:relative;
+  height:100vh;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding-top:120px; /* <—— KLUCZ: hero nie zachodzi pod menu */
+}
+
+.hero-media{
+  position:absolute;
+  inset:0;
+  background-image:url("header.jfif");
+  background-size:cover;
+  background-position:center;
+  transform:scale(1.03);
+  filter:grayscale(1) contrast(.95);
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  padding:40px;
+  max-width:1000px;
+  margin:0 20px;
+  text-align:center;
+}
+
+.hero-inner h1{
+  font-size:3.2rem;
+  line-height:1.05;
+  margin-bottom:18px;
+}
+
+.hero-copy{
+  background:rgba(0,0,0,0.45);
+  padding:28px;
+  border-radius:6px;
+}
+.hero-copy p{
+  font-size:1.08rem;
+  color:var(--accent);
+  max-height:52vh;
+  overflow:hidden;
+}
+
+/* ============================================
+   SECTION LABEL — pionowy dopisek (O nas / Menu / Zespół)
+   ============================================ */
+.section-label{
+  position:absolute;
+  left:28px;
+  top:18px;
+  z-index:3;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  color:var(--muted);
+  letter-spacing:4px;
+  font-size:.9rem;
+  opacity:.85;
+}
+
+@media(min-width:900px){
+  .section-label::after{
+    content:"";
+    position:absolute;
+    left:36px;
+    top:46px;
+    width:calc(100% - 80px);
+    height:1px;
+    background:#2d2d2d;
+  }
+}
+
+/* ============================================
+   BLOKI OGÓLNE
+   ============================================ */
+main{
+  padding-top:90px;
+}
+
+.block{
+  max-width:var(--max-width);
+  margin:80px auto;
+  padding:0 20px;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+.text-image,
+.image-text{
+  gap:28px;
+  align-items:center;
+}
+
+.text{
+  flex:1;
+}
+
+.text h2{
+  font-size:1.9rem;
+  margin-bottom:14px;
+}
+
+.text p{
+  color:var(--accent);
+  font-size:1.05rem;
+  line-height:1.7;
+  max-width:62ch;
+}
+
+.media{
+  flex:1;
+  overflow:hidden;
+  border-radius:8px;
+}
+
+.media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ============================================
+   LAYOUT — duże ekrany
+   ============================================ */
+@media(min-width:900px){
+  .text-image{flex-direction:row}
+  .image-text{flex-direction:row-reverse}
+  .block{gap:40px}
+}
+
+/* ============================================
+   TEAM (zdjęcia nie są ucięte)
+   ============================================ */
+.team-member .media img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+/* ============================================
+   MENU
+   ============================================ */
+.menu-section{
+  position:relative;
+  padding:120px 20px 100px;
+}
+
+.menu-inner{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 20px;
+}
+
+.menu-inner h2{
+  text-align:center;
+  font-size:2.8rem;
+  margin-bottom:26px;
+}
+
+.menu-item{
+  margin-bottom:60px;
+}
+
+.menu-item h3{
+  text-align:center;
+  margin-bottom:14px;
+  font-size:1.6rem;
+}
+
+.menu-content{
+  display:flex;
+  flex-direction:column;
+  text-align:center;
+}
+
+.menu-content p{
+  max-width:70ch;
+  margin:0 auto 20px;
+  font-size:1.1rem;
+  line-height:1.65;
+  color:var(--accent);
+}
+
+.menu-media img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+/* ============================================
+   SEKCJE Z KRESKAMI
+   ============================================ */
+.section-title{
+  position:relative;
+  text-align:center;
+  font-size:2.6rem;
+  margin:80px 0 50px;
+  color:var(--text);
+}
+
+.section-title::before,
+.section-title::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:25%;
+  height:1px;
+  background:#4a4a4a;
+}
+
+.section-title::before{left:0}
+.section-title::after{right:0}
+
+@media(max-width:768px){
+  .section-title{font-size:1.9rem}
+  .section-title::before,
+  .section-title::after{width:10%}
+}
+
+/* ============================================
+   TEAM
+   ============================================ */
+.team{
+  padding:100px 20px 140px;
+}
+
+.team-inner{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 20px;
+}
+
+.team-member{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  margin-bottom:80px;
+}
+
+.team-member h3{
+  font-size:1.7rem;
+  margin-bottom:8px;
+}
+
+/* ============================================
+   Duże ekrany — team
+   ============================================ */
+@media(min-width:900px){
+  .team-member{
+    flex-direction:row;
+    align-items:center;
+  }
+  .team-member.reverse{
+    flex-direction:row-reverse;
+  }
+  .team-member .media{
+    max-width:520px;
+  }
+  .team-member .text{
+    padding:0 28px;
+  }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer{
+  padding:48px 20px;
+  background:#000;
+  text-align:center;
+  color:#9a9a9a;
+}
+
+/* ============================================
+   MOBILE FIXES — najważniejsze poprawki
+   ============================================ */
+@media(max-width:720px){
+  .hero{padding-top:150px}
+  .hero-inner h1{font-size:2rem}
+  .hero-copy p{font-size:.98rem;max-height:none}
+  .section-label{display:none}
+}
+
+@media(max-width:500px){
+  .hero{padding-top:165px}
+  .hero-inner h1{font-size:1.8rem}
+}
+
+/* ============================================ */
+img{max-width:100%;display:block}
